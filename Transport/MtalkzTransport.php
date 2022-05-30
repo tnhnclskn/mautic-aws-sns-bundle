@@ -171,8 +171,8 @@ class MtalkzTransport extends AbstractSmsApi
     protected function sanitizeContent(string $content, Lead $contact) {
         return strtr($content, array(
             '{title}' => $contact->getTitle(),
-            '{first_name}' => $contact->getFirstname(),
-            '{last_name}' => $contact->getLastname(),
+            '{firstname}' => $contact->getFirstname(),
+            '{lastname}' => $contact->getLastname(),
             '{name}' => $contact->getName(),
             '{company}' => $contact->getCompany(),
             '{email}' => $contact->getEmail(),
@@ -183,9 +183,7 @@ class MtalkzTransport extends AbstractSmsApi
             '{country}' => $contact->getCountry(),
             '{zipcode}' => $contact->getZipcode(),
             '{location}' => $contact->getLocation(),
-            '{phone}' => $contact->getPhone(),
-            '{mobile}' => $contact->getMobile(),
-            '{stage}' => $contact->getStage(),
+            '{phone}' => $contact->getLeadPhoneNumber(),
         ));
     }
 }

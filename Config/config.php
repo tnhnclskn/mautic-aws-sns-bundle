@@ -13,7 +13,7 @@ return [
     'name'        => 'Mtalkz SMS',
     'description' => 'Mtalkz SMS integration',
     'author'      => 'gaurav.agrawal@mtalkz.com',
-    'version'     => '1.1.6',
+    'version'     => '1.1.7',
     'services' => [
         'events'  => [],
         'forms'   => [

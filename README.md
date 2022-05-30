@@ -1,12 +1,12 @@
 # Mautic Mtalkz Plugin
-Mtalkz SMS Transport Integration for >= Mautic 2.13 
+Mtalkz SMS Transport Integration for >= Mautic 3.0 
 Provides SMS transport using Mtalkz SMS API Integration
 
 For more info about Mtalkz follow https://www.mtalkz.com/
 
 ## Installation by console
 1. `composer require mtalkz-mobility/mautic-mtalkz-bundle`
-2. `php app/console mautic:plugins:reload`
+2. `php bin/console mautic:plugins:reload`
 
 ## Usage
 1. Go to Mautic > Settings > Plugins

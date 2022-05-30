@@ -60,7 +60,6 @@ class MtalkzIntegration extends AbstractIntegration
         return [
             'api_key' => 'mautic.plugin.mtalkz.api_key',
             'sender_id' => 'mautic.plugin.mtalkz.sender_id',
-            'account_key' => 'mautic.plugin.mtalkz.account_key',
         ];
     }
 

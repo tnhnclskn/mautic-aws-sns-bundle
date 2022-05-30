@@ -79,7 +79,7 @@ class MtalkzTransport extends AbstractSmsApi
         
         try {
             if (!$this->connected && !$this->configureConnection()) {
-                throw new \Exception(self::class . " is not configured properly.");
+                throw new \Exception("Mtalkz SMS is not configured properly.");
             }
 
             $content = $this->sanitizeContent($content, $contact);
@@ -88,10 +88,10 @@ class MtalkzTransport extends AbstractSmsApi
             }
 
             $response = $this->send($number, $content);
-            $this->logger->addInfo(self::class . " request succeeded. ", ['response' => $response]);
+            $this->logger->addInfo("Mtalkz SMS request succeeded. ", ['response' => $response]);
             return true;
         } catch (\Exception $e) {
-            $this->logger->addError(self::class . " request failed. ", ['exception' => $e]);
+            $this->logger->addError("Mtalkz SMS request failed. ", ['exception' => $e]);
             return $e->getMessage();
         }
     }
@@ -116,7 +116,7 @@ class MtalkzTransport extends AbstractSmsApi
         $url = 'http://msg.mtalkz.com/V2/http-api.php?' . http_build_query($params);
         $headers = ['Accept: application/json'];
 
-        $this->logger->addInfo(self::class . " API request intiated. ", ['url' => $url]);
+        $this->logger->addInfo("Mtalkz SMS API request intiated. ", ['url' => $url]);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -169,7 +169,23 @@ class MtalkzTransport extends AbstractSmsApi
      * @return string
      */
     protected function sanitizeContent(string $content, Lead $contact) {
-        $this->logger->addInfo('Lead contents.', ['contact' => \serialize($contact)]);
-        return $content;
+        return strtr($content, array(
+            '{title}' => $contact->getTitle(),
+            '{first_name}' => $contact->getFirstname(),
+            '{last_name}' => $contact->getLastname(),
+            '{name}' => $contact->getName(),
+            '{company}' => $contact->getCompany(),
+            '{email}' => $contact->getEmail(),
+            '{address1}' => $contact->getAddress1(),
+            '{address2}' => $contact->getAddress2(),
+            '{city}' => $contact->getCity(),
+            '{state}' => $contact->getState(),
+            '{country}' => $contact->getCountry(),
+            '{zipcode}' => $contact->getZipcode(),
+            '{location}' => $contact->getLocation(),
+            '{phone}' => $contact->getPhone(),
+            '{mobile}' => $contact->getMobile(),
+            '{stage}' => $contact->getStage(),
+        ));
     }
 }

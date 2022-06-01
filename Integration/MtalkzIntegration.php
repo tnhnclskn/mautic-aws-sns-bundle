@@ -64,19 +64,6 @@ class MtalkzIntegration extends AbstractIntegration
     }
 
     /**
-     * @param \Mautic\PluginBundle\Integration\Form|FormBuilder $builder
-     * @param array                                             $data
-     * @param string                                            $formArea
-     */
-    public function appendToForm(&$builder, $data, $formArea)
-    {
-        if ($formArea == 'keys') {
-
-
-        }
-    }
-
-    /**
      * @return array
      */
     public function getFormSettings()

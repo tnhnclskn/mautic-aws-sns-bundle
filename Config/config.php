@@ -13,7 +13,7 @@ return [
     'name'        => 'Mtalkz SMS',
     'description' => 'Mtalkz SMS integration',
     'author'      => 'gaurav.agrawal@mtalkz.com',
-    'version'     => '1.1.7',
+    'version'     => '1.0.0',
     'services' => [
         'events'  => [],
         'forms'   => [
@@ -25,6 +25,7 @@ return [
                 'arguments' => [
                     'mautic.helper.integration',
                     'monolog.logger.mautic',
+                    'mautic.http.client',
                 ],
                 'alias'        => 'mautic.sms.config.mtalkz.transport',
                 'tag'          => 'mautic.sms_transport',

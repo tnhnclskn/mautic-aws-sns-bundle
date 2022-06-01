@@ -18,6 +18,7 @@ use Mautic\LeadBundle\Entity\Lead;
 use Mautic\PluginBundle\Helper\IntegrationHelper;
 use Mautic\SmsBundle\Api\AbstractSmsApi;
 use Monolog\Logger;
+use GuzzleHttp\Client;
 
 class MtalkzTransport extends AbstractSmsApi
 {
@@ -30,6 +31,11 @@ class MtalkzTransport extends AbstractSmsApi
      * @var IntegrationHelper
      */
     protected $integrationHelper;
+
+    /**
+     * @var Client
+     */
+    protected $client;
 
     /**
      * @var string
@@ -49,11 +55,13 @@ class MtalkzTransport extends AbstractSmsApi
     /**
      * @param IntegrationHelper $integrationHelper
      * @param Logger            $logger
+     * @param Client            $client
      */
-    public function __construct(IntegrationHelper $integrationHelper, Logger $logger)
+    public function __construct(IntegrationHelper $integrationHelper, Logger $logger, Client $client)
     {
         $this->integrationHelper = $integrationHelper;
         $this->logger = $logger;
+        $this->client = $client;
         $this->connected = false;
     }
 
@@ -114,19 +122,15 @@ class MtalkzTransport extends AbstractSmsApi
             'format' => 'json',
         );
         $url = 'http://msg.mtalkz.com/V2/http-api.php?' . http_build_query($params);
-        $headers = ['Accept: application/json'];
+        $headers = ['Accept' => 'application/json'];
 
         $this->logger->addInfo("Mtalkz SMS API request intiated. ", ['url' => $url]);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        $response = curl_exec($ch);
-        curl_close($ch);
+        $response = $this->client->get($url, [
+            'headers' => $headers,            
+        ]);
 
-        return $response;
+        return $response->getBody();
     }
     
     /**

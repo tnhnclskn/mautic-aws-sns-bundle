@@ -5,7 +5,7 @@ Provides SMS transport using Mtalkz SMS API Integration
 For more info about Mtalkz follow https://www.mtalkz.com/
 
 ## Installation by console
-1. `composer require mtalkz/mautic-mtalkz-bundle`
+1. `composer require mtalkz-mobility/mautic-mtalkz-bundle`
 2. `php bin/console mautic:plugins:reload`
 
 ## Usage

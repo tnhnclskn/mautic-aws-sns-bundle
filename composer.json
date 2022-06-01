@@ -1,5 +1,5 @@
 {
-  "name": "mtalkz/mautic-mtalkz-bundle",
+  "name": "mtalkz-mobility/mautic-mtalkz-bundle",
   "description": "Provides SMS transport using Mtalkz SMS API Integration",
   "type": "mautic-plugin",
   "license": "GPL-3.0-or-later",

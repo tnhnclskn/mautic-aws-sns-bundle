@@ -14,7 +14,7 @@ For more info about Mtalkz follow https://www.mtalkz.com/
 <img src="./Assets/img/screenshots/1.png" alt="screenshot-1" />
 3. Publish the plugin and configure it. Authentication credentials can be obtained from http://msg.mtalkz.com/
 <img src="./Assets/img/screenshots/2.png" alt="screenshot-2" />
-4. Go to **Configuration > Text message settings** and select **Mtalkz SMS** as default transport to use
+4. Go to <b>Configuration > Text message settings</b> and select <b>Mtalkz SMS</b> as default transport to use
 <img src="./Assets/img/screenshots/3.png" alt="screenshot-3" />
 5. For more info about text message Mautic support, follow docs https://www.mautic.org/docs/en/sms/index.html
 

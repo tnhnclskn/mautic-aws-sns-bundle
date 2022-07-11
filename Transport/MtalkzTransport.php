@@ -89,8 +89,6 @@ class MtalkzTransport extends AbstractSmsApi
             if (!$this->connected && !$this->configureConnection()) {
                 throw new \Exception("Mtalkz SMS is not configured properly.");
             }
-
-            $content = $this->sanitizeContent($content, $contact);
             if (empty($content)) {
                 throw new \Exception('Message content is Empty.');
             }
@@ -164,30 +162,5 @@ class MtalkzTransport extends AbstractSmsApi
             $this->connected = true;
         }
         return $this->connected;
-    }
-
-    /**
-     * @param string $content
-     * @param Lead   $contact
-     *
-     * @return string
-     */
-    protected function sanitizeContent(string $content, Lead $contact) {
-        return strtr($content, array(
-            '{title}' => $contact->getTitle(),
-            '{firstname}' => $contact->getFirstname(),
-            '{lastname}' => $contact->getLastname(),
-            '{name}' => $contact->getName(),
-            '{company}' => $contact->getCompany(),
-            '{email}' => $contact->getEmail(),
-            '{address1}' => $contact->getAddress1(),
-            '{address2}' => $contact->getAddress2(),
-            '{city}' => $contact->getCity(),
-            '{state}' => $contact->getState(),
-            '{country}' => $contact->getCountry(),
-            '{zipcode}' => $contact->getZipcode(),
-            '{location}' => $contact->getLocation(),
-            '{phone}' => $contact->getLeadPhoneNumber(),
-        ));
     }
 }

@@ -17,6 +17,3 @@ For more info about Mtalkz follow https://www.mtalkz.com/
 4. Go to <b>Configuration > Text message settings</b> and select <b>Mtalkz SMS</b> as default transport to use
 <img src="./Assets/img/screenshots/3.png" alt="screenshot-3" />
 5. For more info about text message Mautic support, follow docs https://www.mautic.org/docs/en/sms/index.html
-
-## Variables
-You can use following variables in your text messages, which will be replaced by corresponding values from the Lead (Contact): `{name}`, `{location}`, `{company}`, `{phone}`, `{email}`, `{title}`, `{firstname}`, `{lastname}`, `{address1}`, `{address2}`, `{city}`, `{state}`, `{country}`, `{zipcode}`

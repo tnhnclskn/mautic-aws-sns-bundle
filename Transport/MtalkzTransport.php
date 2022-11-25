@@ -121,7 +121,7 @@ class MtalkzTransport extends AbstractSmsApi
             'message' => $content,
             'format' => 'json',
         );
-        $url = 'http://msg.mtalkz.com/V2/http-api.php?' . http_build_query($params);
+        $url = 'https://msgn.mtalkz.com/api' . http_build_query($params);
         $headers = ['Accept' => 'application/json'];
 
         $this->logger->addInfo("Mtalkz SMS API request intiated. ", ['url' => $url]);
